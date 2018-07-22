@@ -1,7 +1,7 @@
 #
-#   Copyright (c) 2017 Joy Diamond.  All rights reserved.
+#   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.OldConjureQuadruple')
+@gem('UnitTest.OldConjureQuadruple')
 def gem():
     @share
     def produce_OLD_conjure_quadruple(name, Meta, cache):

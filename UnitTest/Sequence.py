@@ -1,11 +1,11 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.Sequence')
+@gem('UnitTest.Sequence')
 def gem():
     require_gem('Gem.Sequence')
-    require_gem('Topaz.Core')
-    require_gem('Topaz.CacheSupport')
+    require_gem('UnitTest.Core')
+    require_gem('UnitTest.CacheSupport')
 
 
     from Gem import create_sequence_1, create_sequence_2, create_sequence_3, create_sequence_4, create_sequence_many

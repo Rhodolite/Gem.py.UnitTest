@@ -1,7 +1,7 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.GeneratedNew')
+@gem('UnitTest.GeneratedNew')
 def gem():
     from Gem import create_herd_3, create_herd_4, create_herd_many
 

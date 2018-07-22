@@ -1,9 +1,9 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.PortrayString')
+@gem('UnitTest.PortrayString')
 def gem():
-    require_gem('Topaz.Core')
+    require_gem('UnitTest.Core')                                        #   Must appear before `Gem.PortrayString`
     require_gem('Gem.PortrayString')
 
 
@@ -1286,7 +1286,7 @@ def gem():
 
 
     #
-    #   Export `portray_string_many` which is used by "Marble/GenerateTestPortrayString.py", which is uses this
+    #   Export `portray_string_many` which is used by "CodeGenerator/GenerateTestPortrayString.py", which is uses this
     #   python table to generate a java table (also named `portray_string_many`).
     #
     export(

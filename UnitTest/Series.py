@@ -1,12 +1,12 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.Series')
+@gem('UnitTest.Series')
 def gem():
     require_gem('Gem.GarbageCollection')
     require_gem('Gem.Series')
-    require_gem('Topaz.Core')
-    require_gem('Topaz.CacheSupport')
+    require_gem('UnitTest.Core')
+    require_gem('UnitTest.CacheSupport')
 
 
     from Gem import create_series_0, create_series_1, create_series_2, create_series_3, create_series_4

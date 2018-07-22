@@ -24,22 +24,22 @@ def boot():
     import Gem
 
 
-@gem('Topaz.Main')
+@gem('UnitTest.Main')
 def gem():
-    require_gem('Topaz.ConjureDual')
-    require_gem('Topaz.ConjureQuadruple')
-    require_gem('Topaz.ConjureSingle')
-    require_gem('Topaz.ConjureTreeComment')
-    require_gem('Topaz.ConjureTriple')
-    require_gem('Topaz.Drove')
-    require_gem('Topaz.ExceptionChain')
-    require_gem('Topaz.Herd')
-    require_gem('Topaz.Path')
-    require_gem('Topaz.Pattern')
-    require_gem('Topaz.PortrayString')
-    require_gem('Topaz.Sequence')
-    require_gem('Topaz.Series')
-    require_gem('Topaz.StringOutput')
+    require_gem('UnitTest.ConjureDual')
+    require_gem('UnitTest.ConjureQuadruple')
+    require_gem('UnitTest.ConjureSingle')
+    require_gem('UnitTest.ConjureTreeComment')
+    require_gem('UnitTest.ConjureTriple')
+    require_gem('UnitTest.Drove')
+    require_gem('UnitTest.ExceptionChain')
+    require_gem('UnitTest.Herd')
+    require_gem('UnitTest.Path')
+    require_gem('UnitTest.Pattern')
+    require_gem('UnitTest.PortrayString')
+    require_gem('UnitTest.Sequence')
+    require_gem('UnitTest.Series')
+    require_gem('UnitTest.StringOutput')
 
 
     @share
