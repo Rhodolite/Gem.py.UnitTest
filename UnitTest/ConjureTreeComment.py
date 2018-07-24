@@ -3,11 +3,11 @@
 #
 @gem('UnitTest.ConjureTreeComment')
 def gem():
-    require_gem('CoreParser.ConjureTreeComment')
+    require_gem('SqlParser.ConjureTreeComment')
     require_gem('UnitTest.Core')
 
 
-    from CoreParser import conjure_tree_comment, tree_comment_cache
+    from SqlParser import conjure_tree_comment, tree_comment_cache
 
 
     def dump_tree_comment_cache():
