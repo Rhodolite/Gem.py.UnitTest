@@ -1,15 +1,15 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.Pattern')
+@gem('UnitTest.Pattern')
 def gem():
-    require_gem('Topaz.Core')
-    require_gem('Tremolite.Build')
+    require_gem('Restructure.Build')
+    require_gem('UnitTest.Core')
 
 
-    from Tremolite import ANY_OF, DOT, END_OF_PATTERN, EMPTY, EXACT, G
-    from Tremolite import MINIMUM_OF_ONE_OR_MORE, MINIMUM_OF_OPTIONAL, MINIMUM_OF_REPEAT_OR_MORE, MINIMUM_OF_ZERO_OR_MORE
-    from Tremolite import ONE_OR_MORE, OPTIONAL, Q, REPEAT, ZERO_OR_MORE
+    from Restructure import ANY_OF, DOT, END_OF_PATTERN, EMPTY, EXACT, G
+    from Restructure import MINIMUM_OF_ONE_OR_MORE, MINIMUM_OF_OPTIONAL, MINIMUM_OF_REPEAT_OR_MORE, MINIMUM_OF_ZERO_OR_MORE
+    from Restructure import ONE_OR_MORE, OPTIONAL, Q, REPEAT, ZERO_OR_MORE
 
 
     show = false

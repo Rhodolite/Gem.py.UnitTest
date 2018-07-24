@@ -1,10 +1,10 @@
 #
-#   Copyright (c) 2017 Joy Diamond.  All rights reserved.
+#   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.StringOutput')
+@gem('UnitTest.StringOutput')
 def gem():
-    require_gem('Topaz.Core')
     require_gem('Gem.StringOutput')
+    require_gem('UnitTest.Core')
 
 
     from Gem import create_StringOutput

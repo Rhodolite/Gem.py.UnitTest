@@ -1,13 +1,14 @@
 #
-#   Copyright (c) 2017 Joy Diamond.  All rights reserved.
+#   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.ExceptionChain')
+@gem('UnitTest.ExceptionChain')
 def gem():
     require_gem('Gem.CatchException')
     require_gem('Gem.Exception')
     require_gem('Gem.Path')
     require_gem('Gem.Traceback')
-    require_gem('Topaz.Core')
+    require_gem('UnitTest.Core')
+
 
     from Gem import catch_FileNotFoundError, Exception
     from Gem import print_exception_chain, rename_path

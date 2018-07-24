@@ -1,13 +1,13 @@
 #
-#   Copyright (c) 2017 Joy Diamond.  All rights reserved.
+#   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.ConjureTreeComment')
+@gem('UnitTest.ConjureTreeComment')
 def gem():
-    require_gem('Topaz.Core')
-    require_gem('Pearl.ConjureTreeComment')
+    require_gem('CoreParser.ConjureTreeComment')
+    require_gem('UnitTest.Core')
 
 
-    from Pearl import conjure_tree_comment, tree_comment_cache
+    from CoreParser import conjure_tree_comment, tree_comment_cache
 
 
     def dump_tree_comment_cache():

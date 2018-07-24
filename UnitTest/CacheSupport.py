@@ -1,10 +1,10 @@
 #
-#   Copyright (c) 2017 Joy Diamond.  All rights reserved.
+#   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.Cache')
+@gem('UnitTest.Cache')
 def gem():
     require_gem('Gem.Cache2')
-    require_gem('Topaz.Core')
+    require_gem('UnitTest.Core')
 
 
     show_address_and_references = 0

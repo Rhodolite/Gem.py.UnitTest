@@ -1,10 +1,10 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('Topaz.Path')
+@gem('UnitTest.Path')
 def gem():
     require_gem('Gem.Path')
-    require_gem('Topaz.Core')
+    require_gem('UnitTest.Core')
 
 
     from Gem import remove_path__ignore_file_not_found, rename_path__ignore_file_not_found
