@@ -7,7 +7,8 @@ def gem():
     require_gem('Gem.PortrayString')
 
 
-    from Gem import N_N
+    if gem_global.testing:
+        from Gem import N_N
 
 
     portray_string_many = [
@@ -1024,265 +1025,266 @@ def gem():
         ]
 
 
-    def test_portray_raw_string__raw_string():
-        saw_2 = false
+    if gem_global.testing:
+        def test_portray_raw_string__raw_string():
+            saw_2 = false
 
-        for row in portray_string_many:
-            if row is 0:
-                break
+            for row in portray_string_many:
+                if row is 0:
+                    break
 
-            if row is 2:
-                assert 0
-                saw_2 = true
-                continue
+                if row is 2:
+                    assert 0
+                    saw_2 = true
+                    continue
 
-            if length(row) is 2:
-                [s, raw_expected] = row
-                expected          = raw_expected
-            else:
-                [s, raw_expected, expected] = row
+                if length(row) is 2:
+                    [s, raw_expected] = row
+                    expected          = raw_expected
+                else:
+                    [s, raw_expected, expected] = row
 
-            actual = portray_raw_string(s)
+                actual = portray_raw_string(s)
 
-            if actual != raw_expected:
-                line('portray_raw_string(%r)', s)
-                line('  actual:   %s', actual)
-                line('  expected: %s', raw_expected)
-
-                raise_value_error('portray_raw_string(%r): %r (expected: %r)', s, actual, raw_expected)
-
-            if saw_2:
-                continue
-
-            assert expected
-            
-            if expected is not none:
-                actual = portray_string(s)
-
-                if actual != expected:
-                    line('portray_string(%r)', s)
+                if actual != raw_expected:
+                    line('portray_raw_string(%r)', s)
                     line('  actual:   %s', actual)
-                    line('  expected: %s', expected)
+                    line('  expected: %s', raw_expected)
 
-                    raise_value_error('portray_string(%r): %r (expected: %r)', s, actual, expected)
+                    raise_value_error('portray_raw_string(%r): %r (expected: %r)', s, actual, raw_expected)
 
+                if saw_2:
+                    continue
 
-    def create_state_machine_tuple():
-        state_machine__map    = {}
-        state_machine__lookup = state_machine__map.get
-        state_machine__store  = state_machine__map.__setitem__
+                assert expected
+                
+                if expected is not none:
+                    actual = portray_string(s)
 
+                    if actual != expected:
+                        line('portray_string(%r)', s)
+                        line('  actual:   %s', actual)
+                        line('  expected: %s', expected)
 
-        def state_machine__insert(state):
-            previous = state_machine__lookup(state.name)
-
-            if previous is state:
-                return
-
-            assert previous is none
-
-            state_machine__store(state.name, state)
-
-            state_machine__insert(state.A)
-            state_machine__insert(state.K)
-            state_machine__insert(state.N)
-            state_machine__insert(state.Q)
+                        raise_value_error('portray_string(%r): %r (expected: %r)', s, actual, expected)
 
 
-        state_machine__insert(N_N)
+        def create_state_machine_tuple():
+            state_machine__map    = {}
+            state_machine__lookup = state_machine__map.get
+            state_machine__store  = state_machine__map.__setitem__
 
-        return values_tuple_sorted_by_key(state_machine__map)
+
+            def state_machine__insert(state):
+                previous = state_machine__lookup(state.name)
+
+                if previous is state:
+                    return
+
+                assert previous is none
+
+                state_machine__store(state.name, state)
+
+                state_machine__insert(state.A)
+                state_machine__insert(state.K)
+                state_machine__insert(state.N)
+                state_machine__insert(state.Q)
 
 
-    def test_state_machine(state):
-        def verify_name(mode, value, expected_prefix, expected_suffix):
-            if value.name != expected_prefix + '_' + expected_suffix:
-                raise_runtime_error('PortrayStringState.setup: %s + %s => %s (expected %s)',
-                                    name, mode, value.name, expected_prefix + '_' + expected_suffix)
+            state_machine__insert(N_N)
 
-        name = state.name
-        A    = state.A
-        K    = state.K
-        N    = state.N
-        Q    = state.Q
-        kc   = state.kc
-        ks   = state.ks
-        pc   = state.pc
-        ps   = state.ps
-        ra   = state.ra
-        rq   = state.rq
+            return values_tuple_sorted_by_key(state_machine__map)
 
-        underscore = name.index('_')
-        prefix     = name[:underscore]
-        suffix     = name[underscore + 1:]
 
-        PA = PC = PCS = PL = PN = PQ = PS = 0
-        SA = SB = SC = SK = SN = SQ = SR = SS = 0
+        def test_state_machine(state):
+            def verify_name(mode, value, expected_prefix, expected_suffix):
+                if value.name != expected_prefix + '_' + expected_suffix:
+                    raise_runtime_error('PortrayStringState.setup: %s + %s => %s (expected %s)',
+                                        name, mode, value.name, expected_prefix + '_' + expected_suffix)
 
-        if prefix == 'A':           PA = 7
-        elif prefix == 'AQ':        PA = PQ = 7
-        elif prefix == 'AS':        PA = PS = 7
-        elif prefix == 'C':         PC = 7
-        elif prefix == 'CQ':        PC = PQ = 7
-        elif prefix == 'CS':        PC = PCS = PS = 7
-        elif prefix == 'L':         PL = 7
-        elif prefix == 'N':         PN = 7
-        elif prefix == 'Q':         PQ = 7
-        elif prefix == 'S':         PS = 7
-        else:                       raise_runtime_error('incomplete: prefix: %s', prefix)
+            name = state.name
+            A    = state.A
+            K    = state.K
+            N    = state.N
+            Q    = state.Q
+            kc   = state.kc
+            ks   = state.ks
+            pc   = state.pc
+            ps   = state.ps
+            ra   = state.ra
+            rq   = state.rq
 
-        if suffix == 'A':           SA = 7
-        elif suffix == 'B':         SB = 7
-        elif suffix == 'C':         SC = 7
-        elif suffix == 'K':         SK = 7
-        elif suffix == 'N':         SN = 7
-        elif suffix == 'Q':         SQ = 7
-        elif suffix == 'R':         SR = 7
-        elif suffix == 'S':         SS = 7
-        else:
-            raise_runtime_error('incomplete: suffix: %s', suffix)
+            underscore = name.index('_')
+            prefix     = name[:underscore]
+            suffix     = name[underscore + 1:]
 
-        #<A>
-        C_prefix = '?'
+            PA = PC = PCS = PL = PN = PQ = PS = 0
+            SA = SB = SC = SK = SN = SQ = SR = SS = 0
 
-        if PA:
-            A_prefix = prefix
-            C_prefix = 'C' + prefix[1:]
-        elif (PC) or (PL):
-            A_prefix = C_prefix = prefix
-        elif PN:
-            A_prefix = 'A'
-        else:
-            A_prefix = 'A' + prefix
+            if prefix == 'A':           PA = 7
+            elif prefix == 'AQ':        PA = PQ = 7
+            elif prefix == 'AS':        PA = PS = 7
+            elif prefix == 'C':         PC = 7
+            elif prefix == 'CQ':        PC = PQ = 7
+            elif prefix == 'CS':        PC = PCS = PS = 7
+            elif prefix == 'L':         PL = 7
+            elif prefix == 'N':         PN = 7
+            elif prefix == 'Q':         PQ = 7
+            elif prefix == 'S':         PS = 7
+            else:                       raise_runtime_error('incomplete: prefix: %s', prefix)
 
-        if (SA) or (SC):    verify_name('A', A, A_prefix, 'B')
-        elif SB:            verify_name('A', A, C_prefix, 'C')
-        elif SK:            verify_name('A', A, prefix,   'N')
-        else:               verify_name('A', A, A_prefix, 'A')
-        #</A>
-
-        #<K>
-        if SK:      verify_name('K', K, prefix, 'N')
-        else:       verify_name('K', K, prefix, ('N'   if (PCS) or (PL) else   'K'))
-        #</K>
-
-        #<N>
-        verify_name('N', N, prefix, 'N')
-        #</N>
-
-        #<Q>
-        S_prefix = '?'
-
-        if PQ:
-            Q_prefix = prefix
-            S_prefix = prefix[:-1] + 'S'
-        elif (PL) or (PS):
-            Q_prefix = S_prefix = prefix
-        elif PN:
-            Q_prefix = 'Q'
-        else:
-            Q_prefix = prefix + 'Q'
-
-        #line('%s: SR<%d>, Qp<%s>, Sp<%s>', name, SR, Q_prefix, S_prefix)
-
-        if (SQ) or (SS):    verify_name('Q', Q, Q_prefix, 'R')
-        elif SR:            verify_name('Q', Q, S_prefix, 'S')
-        elif SK:            verify_name('Q', Q, prefix,   'N')
-        else:               verify_name('Q', Q, Q_prefix, 'Q')
-        #</Q>
-
-        #<ra & rq>
-        if (PL) or (PCS) or (SK):
-            expected_RQ = expected_RN = 0
-        elif (PC):
-            assert not SS
-
-            if (SQ) or (SR):
-                expected_RQ = expected_RN = 0
+            if suffix == 'A':           SA = 7
+            elif suffix == 'B':         SB = 7
+            elif suffix == 'C':         SC = 7
+            elif suffix == 'K':         SK = 7
+            elif suffix == 'N':         SN = 7
+            elif suffix == 'Q':         SQ = 7
+            elif suffix == 'R':         SR = 7
+            elif suffix == 'S':         SS = 7
             else:
-                if PQ:
-                    expected_RQ = expected_RN = 'portray_raw_string_with_triple_quotation_mark'
-                else:
-                    expected_RQ = expected_RN = 'portray_raw_string_with_quotation_mark'
-        elif (PS):
-            assert not SC
+                raise_runtime_error('incomplete: suffix: %s', suffix)
 
-            if (SA) or (SB):
-                expected_RQ = expected_RN = 0
+            #<A>
+            C_prefix = '?'
+
+            if PA:
+                A_prefix = prefix
+                C_prefix = 'C' + prefix[1:]
+            elif (PC) or (PL):
+                A_prefix = C_prefix = prefix
+            elif PN:
+                A_prefix = 'A'
             else:
-                if PA:
-                    expected_RQ = expected_RN = 'portray_raw_string_with_triple_apostrophe'
-                else:
-                    expected_RQ = expected_RN = 'portray_raw_string_with_apostrophe'
-        elif PA:
-            assert not SC
+                A_prefix = 'A' + prefix
+
+            if (SA) or (SC):    verify_name('A', A, A_prefix, 'B')
+            elif SB:            verify_name('A', A, C_prefix, 'C')
+            elif SK:            verify_name('A', A, prefix,   'N')
+            else:               verify_name('A', A, A_prefix, 'A')
+            #</A>
+
+            #<K>
+            if SK:      verify_name('K', K, prefix, 'N')
+            else:       verify_name('K', K, prefix, ('N'   if (PCS) or (PL) else   'K'))
+            #</K>
+
+            #<N>
+            verify_name('N', N, prefix, 'N')
+            #</N>
+
+            #<Q>
+            S_prefix = '?'
 
             if PQ:
-                if (SA) or (SB):
-                    expected_RQ = expected_RN = 'portray_raw_string_with_triple_quotation_mark'
-                elif (SQ) or (SR):
-                    expected_RQ = expected_RN = 'portray_raw_string_with_triple_apostrophe'
-                else:
-                    expected_RN = 'portray_raw_string_with_triple_apostrophe'
-                    expected_RQ = 'portray_raw_string_with_triple_quotation_mark'
+                Q_prefix = prefix
+                S_prefix = prefix[:-1] + 'S'
+            elif (PL) or (PS):
+                Q_prefix = S_prefix = prefix
+            elif PN:
+                Q_prefix = 'Q'
             else:
-                expected_RN = expected_RQ = 'portray_raw_string_with_quotation_mark'
-        elif PQ:
-            assert not SS
+                Q_prefix = prefix + 'Q'
 
-            expected_RQ = expected_RN = 'portray_raw_string_with_apostrophe'
-        elif PN:
-            assert (not SA) and (not SB) and (not SC) and (not SQ) and (not SR) and (not SS)
+            #line('%s: SR<%d>, Qp<%s>, Sp<%s>', name, SR, Q_prefix, S_prefix)
 
-            expected_RN = 'portray_raw_string_with_apostrophe'
-            expected_RQ = 'portray_raw_string_with_quotation_mark'
-        else:
-            expected_RQ = expected_RN = '?'
+            if (SQ) or (SS):    verify_name('Q', Q, Q_prefix, 'R')
+            elif SR:            verify_name('Q', Q, S_prefix, 'S')
+            elif SK:            verify_name('Q', Q, prefix,   'N')
+            else:               verify_name('Q', Q, Q_prefix, 'Q')
+            #</Q>
 
-        if expected_RN is 0:
-            if ra is not 0:
-                raise_runtime_error('PortrayStringState.setup: %s.ra => %s (expected_RN 0)', name, ra, expected_RN)
-        elif ra.__name__ != expected_RN:
-            raise_runtime_error('PortrayStringState.setup: %s.ra => %s (expected_RN %s)',
-                                name, ra.__name__, expected_RN)
+            #<ra & rq>
+            if (PL) or (PCS) or (SK):
+                expected_RQ = expected_RN = 0
+            elif (PC):
+                assert not SS
 
-        if expected_RQ is 0:
-            if rq is not 0:
-                raise_runtime_error('PortrayStringState.setup: %s.rq => %s (expected_RQ 0)', name, rq, expected_RQ)
-        elif rq.__name__ != expected_RQ:
-            raise_runtime_error('PortrayStringState.setup: %s.rq => %s (expected_RQ %s)',
-                                name, rq.__name__, expected_RQ)
-        #</ra & rq>
+                if (SQ) or (SR):
+                    expected_RQ = expected_RN = 0
+                else:
+                    if PQ:
+                        expected_RQ = expected_RN = 'portray_raw_string_with_triple_quotation_mark'
+                    else:
+                        expected_RQ = expected_RN = 'portray_raw_string_with_quotation_mark'
+            elif (PS):
+                assert not SC
 
-        #<favorite_3>
-        if SC:
-            expected_F3 = -1
-        elif SS:
-            expected_F3 = 1
-        else:
-            expected_F3 = 0
+                if (SA) or (SB):
+                    expected_RQ = expected_RN = 0
+                else:
+                    if PA:
+                        expected_RQ = expected_RN = 'portray_raw_string_with_triple_apostrophe'
+                    else:
+                        expected_RQ = expected_RN = 'portray_raw_string_with_apostrophe'
+            elif PA:
+                assert not SC
 
-        if state.favorite_3 != expected_F3:
-            raise_runtime_error('PortrayStringState.setup: %s.favorite_3<%d>  (expected %d)',
-                                name, state.favorite_3, expected_F3)
-        #</favorite_3>
+                if PQ:
+                    if (SA) or (SB):
+                        expected_RQ = expected_RN = 'portray_raw_string_with_triple_quotation_mark'
+                    elif (SQ) or (SR):
+                        expected_RQ = expected_RN = 'portray_raw_string_with_triple_apostrophe'
+                    else:
+                        expected_RN = 'portray_raw_string_with_triple_apostrophe'
+                        expected_RQ = 'portray_raw_string_with_triple_quotation_mark'
+                else:
+                    expected_RN = expected_RQ = 'portray_raw_string_with_quotation_mark'
+            elif PQ:
+                assert not SS
+
+                expected_RQ = expected_RN = 'portray_raw_string_with_apostrophe'
+            elif PN:
+                assert (not SA) and (not SB) and (not SC) and (not SQ) and (not SR) and (not SS)
+
+                expected_RN = 'portray_raw_string_with_apostrophe'
+                expected_RQ = 'portray_raw_string_with_quotation_mark'
+            else:
+                expected_RQ = expected_RN = '?'
+
+            if expected_RN is 0:
+                if ra is not 0:
+                    raise_runtime_error('PortrayStringState.setup: %s.ra => %s (expected_RN 0)', name, ra, expected_RN)
+            elif ra.__name__ != expected_RN:
+                raise_runtime_error('PortrayStringState.setup: %s.ra => %s (expected_RN %s)',
+                                    name, ra.__name__, expected_RN)
+
+            if expected_RQ is 0:
+                if rq is not 0:
+                    raise_runtime_error('PortrayStringState.setup: %s.rq => %s (expected_RQ 0)', name, rq, expected_RQ)
+            elif rq.__name__ != expected_RQ:
+                raise_runtime_error('PortrayStringState.setup: %s.rq => %s (expected_RQ %s)',
+                                    name, rq.__name__, expected_RQ)
+            #</ra & rq>
+
+            #<favorite_3>
+            if SC:
+                expected_F3 = -1
+            elif SS:
+                expected_F3 = 1
+            else:
+                expected_F3 = 0
+
+            if state.favorite_3 != expected_F3:
+                raise_runtime_error('PortrayStringState.setup: %s.favorite_3<%d>  (expected %d)',
+                                    name, state.favorite_3, expected_F3)
+            #</favorite_3>
 
 
-    def test_portray_raw_string__state_machine():
-        state_machine_tuple = create_state_machine_tuple()
+        def test_portray_raw_string__state_machine():
+            state_machine_tuple = create_state_machine_tuple()
 
-        for state in state_machine_tuple:
-            test_state_machine(state)
+            for state in state_machine_tuple:
+                test_state_machine(state)
 
 
-    @share
-    def test_portray_raw_string():
-        if __debug__:
-            test_portray_raw_string__state_machine()
+        @share
+        def test_portray_raw_string():
+            if __debug__:
+                test_portray_raw_string__state_machine()
 
-        test_portray_raw_string__raw_string()
+            test_portray_raw_string__raw_string()
 
-        line('PASSED: portray_raw_string')
+            line('PASSED: portray_raw_string')
 
 
     #

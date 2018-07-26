@@ -20,12 +20,27 @@ def boot():
     module_path.insert(2, path_absolute(path_join(path_0, '../../Parser')))
     module_path.insert(3, path_absolute(path_join(path_0, '../../Tremolite')))
 
+    #
+    #   For SqlParser.ConjureTreeComment we need '../../Parser/Mothballed'
+    #
+    module_path.insert(4, path_absolute(path_join(path_0, '../../Parser/Mothballed')))
+
 
     import Gem
 
 
 @gem('UnitTest.Main')
 def gem():
+    require_gem('Gem.Global')
+
+
+    from Gem import gem_global
+
+
+    gem_global.sql_parser = true                                        #   For `lookup_name` in CoreParser.Atom
+    gem_global.testing    = true
+
+
     require_gem('UnitTest.ConjureDual')
     require_gem('UnitTest.ConjureQuadruple')
     require_gem('UnitTest.ConjureSingle')
