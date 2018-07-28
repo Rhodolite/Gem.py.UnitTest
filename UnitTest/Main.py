@@ -15,7 +15,7 @@ def boot():
 
     path_0 = module_path[0]
 
-    module_path.insert(0, path_absolute(path_join(path_0, '../../Gem')))
+    module_path.insert(0, path_absolute(path_join(path_0, '../../Capital')))
     module_path.insert(1, path_absolute(path_join(path_0, '../')))
     module_path.insert(2, path_absolute(path_join(path_0, '../../Parser')))
     module_path.insert(3, path_absolute(path_join(path_0, '../../Tremolite')))
@@ -26,35 +26,35 @@ def boot():
     module_path.insert(4, path_absolute(path_join(path_0, '../../Parser/Mothballed')))
 
 
-    import Gem
+    import Capital
 
 
-@gem('UnitTest.Main')
-def gem():
-    require_gem('Gem.Global')
+@module('UnitTest.Main')
+def module():
+    require_module('Capital.Global')
 
 
-    from Gem import gem_global
+    from Capital import capital_global
 
 
-    gem_global.sql_parser = true                                        #   For `lookup_name` in CoreParser.Atom
-    gem_global.testing    = true
+    capital_global.sql_parser = true                                    #   For `lookup_name` in CoreParser.Atom
+    capital_global.testing    = true
 
 
-    require_gem('UnitTest.ConjureDual')
-    require_gem('UnitTest.ConjureQuadruple')
-    require_gem('UnitTest.ConjureSingle')
-    require_gem('UnitTest.ConjureTreeComment')
-    require_gem('UnitTest.ConjureTriple')
-    require_gem('UnitTest.Drove')
-    require_gem('UnitTest.ExceptionChain')
-    require_gem('UnitTest.Herd')
-    require_gem('UnitTest.Path')
-    require_gem('UnitTest.Pattern')
-    require_gem('UnitTest.PortrayString')
-    require_gem('UnitTest.Sequence')
-    require_gem('UnitTest.Series')
-    require_gem('UnitTest.StringOutput')
+    require_module('UnitTest.ConjureDual')
+    require_module('UnitTest.ConjureQuadruple')
+    require_module('UnitTest.ConjureSingle')
+    require_module('UnitTest.ConjureTreeComment')
+    require_module('UnitTest.ConjureTriple')
+    require_module('UnitTest.Drove')
+    require_module('UnitTest.ExceptionChain')
+    require_module('UnitTest.Herd')
+    require_module('UnitTest.Path')
+    require_module('UnitTest.Pattern')
+    require_module('UnitTest.PortrayString')
+    require_module('UnitTest.Sequence')
+    require_module('UnitTest.Series')
+    require_module('UnitTest.StringOutput')
 
 
     @share

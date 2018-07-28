@@ -1,11 +1,11 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.Cache')
-def gem():
-    require_gem('UnitTest.Core')
-    require_gem('UnitTest.CacheSupport')
-    require_gem('UnitTest.GeneratedConjureTriple')
+@module('UnitTest.Cache')
+def module():
+    require_module('UnitTest.Core')
+    require_module('UnitTest.CacheSupport')
+    require_module('UnitTest.GeneratedConjureTriple')
 
 
     show = 0

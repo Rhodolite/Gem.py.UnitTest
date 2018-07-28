@@ -1,9 +1,10 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.GeneratedConjureTriple')
-def gem():
-    from Gem import create_herd_3, create_herd_4, create_herd_many, create_horde_2, create_horde_many, displace_4y, displace_4z, displace_4z6, displace_4z7
+@module('UnitTest.GeneratedConjureTriple')
+def module():
+    from Capital import create_herd_3, create_herd_4, create_herd_many, create_horde_2, create_horde_many
+    from Capital import displace_4y, displace_4z, displace_4z6, displace_4z7
 
 
     map__lookup  = Map.get

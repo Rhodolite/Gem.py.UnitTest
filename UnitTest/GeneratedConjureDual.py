@@ -1,9 +1,9 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.GeneratedConjureDual')
-def gem():
-    from Gem import create_herd_3, create_herd_4, create_herd_many
+@module('UnitTest.GeneratedConjureDual')
+def module():
+    from Capital import create_herd_3, create_herd_4, create_herd_many
 
 
     map__lookup  = Map.get

@@ -1,10 +1,10 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.Pattern')
-def gem():
-    require_gem('Restructure.Build')
-    require_gem('UnitTest.Core')
+@module('UnitTest.Pattern')
+def module():
+    require_module('Restructure.Build')
+    require_module('UnitTest.Core')
 
 
     from Restructure import ANY_OF, DOT, END_OF_PATTERN, EMPTY, EXACT, G

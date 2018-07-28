@@ -1,10 +1,10 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.Herd')
-def gem():
-    require_gem('UnitTest.Core')
-    require_gem('UnitTest.CacheSupport')
+@module('UnitTest.Herd')
+def module():
+    require_module('UnitTest.Core')
+    require_module('UnitTest.CacheSupport')
 
 
     #

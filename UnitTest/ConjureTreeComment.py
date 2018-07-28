@@ -1,10 +1,10 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.ConjureTreeComment')
-def gem():
-    require_gem('SqlParser.ConjureTreeComment')
-    require_gem('UnitTest.Core')
+@module('UnitTest.ConjureTreeComment')
+def module():
+    require_module('SqlParser.ConjureTreeComment')
+    require_module('UnitTest.Core')
 
 
     from SqlParser import conjure_tree_comment, tree_comment_cache

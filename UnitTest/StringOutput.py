@@ -1,13 +1,13 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.StringOutput')
-def gem():
-    require_gem('Gem.StringOutput')
-    require_gem('UnitTest.Core')
+@module('UnitTest.StringOutput')
+def module():
+    require_module('Capital.StringOutput')
+    require_module('UnitTest.Core')
 
 
-    from Gem import create_StringOutput
+    from Capital import create_StringOutput
 
 
     @share
