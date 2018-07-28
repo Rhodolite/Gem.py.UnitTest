@@ -1,14 +1,14 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.PortrayString')
-def gem():
-    require_gem('UnitTest.Core')                                        #   Must appear before `Gem.PortrayString`
-    require_gem('Gem.PortrayString')
+@module('UnitTest.PortrayString')
+def module():
+    require_module('UnitTest.Core')                                        #   Must appear before `Capital.PortrayString`
+    require_module('Capital.PortrayString')
 
 
-    if gem_global.testing:
-        from Gem import N_N
+    if capital_global.testing:
+        from Capital import N_N
 
 
     portray_string_many = [
@@ -1025,7 +1025,7 @@ def gem():
         ]
 
 
-    if gem_global.testing:
+    if capital_global.testing:
         def test_portray_raw_string__raw_string():
             saw_2 = false
 

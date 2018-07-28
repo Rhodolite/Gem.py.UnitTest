@@ -1,8 +1,8 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.OldConjureQuadruple')
-def gem():
+@module('UnitTest.OldConjureQuadruple')
+def module():
     @share
     def produce_OLD_conjure_quadruple(name, Meta, cache):
         lookup = cache.get

@@ -1,11 +1,11 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.Cache')
-def gem():
-    require_gem('Gem.Cache2')
-    require_gem('UnitTest.Core')
-    require_gem('UnitTest.CacheSupport')
+@module('UnitTest.Cache')
+def module():
+    require_module('Capital.Cache2')
+    require_module('UnitTest.Core')
+    require_module('UnitTest.CacheSupport')
 
 
     #

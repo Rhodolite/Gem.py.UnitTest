@@ -1,17 +1,17 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.ExceptionChain')
-def gem():
-    require_gem('Gem.CatchException')
-    require_gem('Gem.Exception')
-    require_gem('Gem.Path')
-    require_gem('Gem.Traceback')
-    require_gem('UnitTest.Core')
+@module('UnitTest.ExceptionChain')
+def module():
+    require_module('Capital.CatchException')
+    require_module('Capital.Exception')
+    require_module('Capital.Path')
+    require_module('Capital.Traceback')
+    require_module('UnitTest.Core')
 
 
-    from Gem import catch_FileNotFoundError, Exception
-    from Gem import print_exception_chain, rename_path
+    from Capital import catch_FileNotFoundError, Exception
+    from Capital import print_exception_chain, rename_path
 
 
     class Context(Object):

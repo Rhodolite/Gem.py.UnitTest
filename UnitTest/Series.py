@@ -1,17 +1,16 @@
 #
 #   Copyright (c) 2017-2018 Joy Diamond.  All rights reserved.
 #
-@gem('UnitTest.Series')
-def gem():
-    require_gem('Gem.GarbageCollection')
-    require_gem('Gem.Series')
-    require_gem('UnitTest.Core')
-    require_gem('UnitTest.CacheSupport')
+@module('UnitTest.Series')
+def module():
+    require_module('Capital.GarbageCollection')
+    require_module('Capital.Series')
+    require_module('UnitTest.Core')
+    require_module('UnitTest.CacheSupport')
 
 
-    from Gem import create_series_0, create_series_1, create_series_2, create_series_3, create_series_4
-    from Gem import create_series_0, create_series_1, create_series_2, create_series_3, create_series_4
-    from Gem import dump_series_statistics, collect_garbage
+    from Capital import create_series_0, create_series_1, create_series_2, create_series_3, create_series_4
+    from Capital import dump_series_statistics, collect_garbage
 
 
     #
