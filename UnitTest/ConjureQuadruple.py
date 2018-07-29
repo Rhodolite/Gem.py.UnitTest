@@ -3,10 +3,13 @@
 #
 @module('UnitTest.Cache')
 def module():
-    require_module('UnitTest.Core')
     require_module('UnitTest.CacheSupport')
+    require_module('UnitTest.Core')
     require_module('UnitTest.GeneratedConjureQuadruple')
     require_module('UnitTest.OldConjureQuadruple')
+
+
+    transport('Capital.GeneratedConjureQuadruple',  'produce_conjure_quadruple__4123')
 
 
     show = 0

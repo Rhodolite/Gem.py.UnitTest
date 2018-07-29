@@ -4,14 +4,16 @@
 @module('UnitTest.ExceptionChain')
 def module():
     require_module('Capital.CatchException')
-    require_module('Capital.Exception')
     require_module('Capital.Path')
     require_module('Capital.Traceback')
     require_module('UnitTest.Core')
 
 
-    from Capital import catch_FileNotFoundError, Exception
-    from Capital import print_exception_chain, rename_path
+    transport('Capital.Traceback',                  'print_exception_chain')
+
+
+    from Capital import catch_FileNotFoundError
+    from Capital import rename_path
 
 
     class Context(Object):

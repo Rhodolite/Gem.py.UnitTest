@@ -1057,7 +1057,7 @@ def module():
                     continue
 
                 assert expected
-                
+
                 if expected is not none:
                     actual = portray_string(s)
 

@@ -3,11 +3,10 @@
 #
 @module('UnitTest.StringOutput')
 def module():
-    require_module('Capital.StringOutput')
     require_module('UnitTest.Core')
 
 
-    from Capital import create_StringOutput
+    transport('Capital.StringOutput',               'create_StringOutput')
 
 
     @share

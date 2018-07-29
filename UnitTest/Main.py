@@ -31,10 +31,7 @@ def boot():
 
 @module('UnitTest.Main')
 def module():
-    require_module('Capital.Global')
-
-
-    from Capital import capital_global
+    transport('Capital.Global',                     'capital_global')
 
 
     capital_global.sql_parser = true                                    #   For `lookup_name` in CoreParser.Atom
