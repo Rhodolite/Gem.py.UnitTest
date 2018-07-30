@@ -9,6 +9,10 @@ def module():
     require_module('UnitTest.GeneratedNew')
 
 
+    transport('Capital.Cache2',                     'produce_conjure_unique_dual')
+    transport('Capital.Cache2',                     'produce_conjure_unique_dual__21')
+
+
     show = 0
 
 

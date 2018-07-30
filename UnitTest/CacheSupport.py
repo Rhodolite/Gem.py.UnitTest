@@ -3,7 +3,6 @@
 #
 @module('UnitTest.Cache')
 def module():
-    require_module('Capital.Cache2')
     require_module('UnitTest.Core')
 
 

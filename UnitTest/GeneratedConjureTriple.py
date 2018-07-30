@@ -3,7 +3,7 @@
 #
 @module('UnitTest.GeneratedConjureTriple')
 def module():
-    from Capital import create_herd_3, create_herd_4, create_herd_many, create_horde_2, create_horde_many
+    from Capital import create_herd_3, create_herd_4, create_herd_many, create_horde_many
     from Capital import displace_4y, displace_4z, displace_4z6, displace_4z7
 
 

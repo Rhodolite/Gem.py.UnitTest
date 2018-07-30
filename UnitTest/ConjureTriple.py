@@ -8,6 +8,10 @@ def module():
     require_module('UnitTest.GeneratedConjureTriple')
 
 
+    transport('Capital.Cache2',                     'produce_conjure_unique_triple')
+    transport('Capital.Cache2',                     'produce_conjure_unique_triple__312')
+
+
     show = 0
 
 

@@ -6,6 +6,7 @@ def module():
     require_module('UnitTest.Core')
     require_module('UnitTest.CacheSupport')
 
+
     #
     #   Number: Specific instances
     #
